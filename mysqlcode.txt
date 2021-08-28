@@ -1,0 +1,58 @@
+                   ------root------
+//create a new database
+create database studentapi;
+use studentapi;
+
+//create new user to access the dababase
+create user 'studentuser'@'localhost' identified by '123';
+Query OK, 0 rows affected (1.488 sec)
+
+//grand a permission to new user to access the database
+grant all on studentapi.* to 'studentuser'@'localhost';
+Query OK, 0 rows affected (0.075 sec)
+
+MariaDB [studentapi]> exit
+Bye
+
+                  -------studentuser-----
+dell@DESKTOP-4O0G6LE c:\xampp
+# mysql -u studentuser -p
+Enter password: ***
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| studentapi         |
+| test               |
++--------------------+
+3 rows in set (0.001 sec)
+
+ ----after run the code------
+
+MariaDB [studentapi]> show tables;
++----------------------+
+| Tables_in_studentapi |
++----------------------+
+| student              |
++----------------------+
+1 row in set (0.015 sec)
+
+
+
+-----the class converted as a table------
+
+MariaDB [studentapi]> desc student;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| student_id | varchar(255) | NO   | PRI | NULL    |       |
+| age        | int(11)      | NO   |     | NULL    |       |
+| degree     | varchar(255) | YES  |     | NULL    |       |
+| gpa        | double       | NO   |     | NULL    |       |
+| name       | varchar(255) | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+5 rows in set (0.312 sec)
+
+
